@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const app = require('../');
+const app = require("..");
 const port = process.env.PORT;
 
 app.listen(port, () => console.log(`Listening on ${port}...`));
