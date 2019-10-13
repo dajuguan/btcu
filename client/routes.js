@@ -16,16 +16,16 @@ const isFlexboxSupported = Modernizr.flexbox && Modernizr.flexwrap;
 
 function ensureSignedIn(nextState, replace) {
   //去除登录验证
-  // if (!cookie.get('authenticated')) {
-  //   replace('/sign-in');
-  // }
+  if (!cookie.get('authenticated')) {
+    replace('/sign-in');
+  }
 }
 
 function ensureSignedOut(nextState, replace) {
   //去除登出
-  // if (cookie.get("authenticated")) {
-  //   replace("/");
-  // }
+  if (cookie.get("authenticated")) {
+    replace("/");
+  }
 }
 
 function ensureBrowserIsUpdated(nextState, replace) {

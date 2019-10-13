@@ -84,8 +84,8 @@ const User = {
   },
 
   sanitize(props) {
-    const username = (props.username || '').toLowerCase();
-    const email = (props.email || '').toLowerCase();
+    const username = (props.username || 'BTCU');
+    const email = (props.email || 'BTCU');
     return _.assign({}, props, {
       username,
       email,
