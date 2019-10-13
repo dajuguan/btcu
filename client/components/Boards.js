@@ -187,8 +187,6 @@ function Boards({ ids = [], spinner, error }) {
     <div className="b-boards">
       {error ? (
         <div className="b-boards__message">Error loading boards.</div>
-      ) : !ids.length ? (
-        <div className="b-boards__message">Boards not found.</div>
       ) : (
         <div style={{ background: "#ECECEC", padding: "30px" }}>
           <List
