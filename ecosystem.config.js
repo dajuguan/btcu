@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "btcu_PM2",
-      script: "/root/btcu/server/bin/www",
+      script: "./server/bin/www",
       env: {
         NODE_ENV: "production",
         DATABASE_URL: "postgres://root:buaa@localhost:5432/test",
