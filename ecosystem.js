@@ -8,9 +8,9 @@ module.exports = {
         DATABASE_URL: "postgres://root:buaa@localhost:5432/test",
         JWT_SECRET: "password",
         PORT: 8001
-      },
-      instances: 2,
-      exec_mode: "cluster"
+      }
+      // instances: 2,
+      // exec_mode: "cluster"
     }
   ]
 };
