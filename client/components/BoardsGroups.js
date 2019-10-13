@@ -8,7 +8,7 @@ function BoardsGroups({ groups, onGroupTitleClick }) {
   return (
     <div className="b-boards-groups">
       <div className="b-container">
-        {groups.map(
+        {[groups[0]].map(
           ({ title, type, ids, count, hidden, spinner, error }, i) => (
             <div className="b-boards-groups__group" key={i}>
               <Toggle
