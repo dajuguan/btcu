@@ -1,10 +1,10 @@
-import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
-import { addModifiers } from '../utils';
-import IconItem from './IconItem';
-import Icon from './Icon';
-import MenuList from './MenuList';
-import ToggleMenu from './ToggleMenu';
+import React, { PropTypes } from "react";
+import { Link } from "react-router";
+import { addModifiers } from "../utils";
+import IconItem from "./IconItem";
+import Icon from "./Icon";
+import MenuList from "./MenuList";
+import ToggleMenu from "./ToggleMenu";
 
 function BoardTile({
   id,
@@ -15,13 +15,13 @@ function BoardTile({
   cardsLength,
   onRemoveClick,
   onEditClick,
-  onToggleStarredClick,
+  onToggleStarredClick
 }) {
   return (
     <div className="b-board-tile">
       <div className="b-board-tile__top">
         <div className="b-board-tile__left">
-          <span className="b-board-tile__title">{title}</span>
+          <span className="b-board-tile__title">{""}</span>
         </div>
         <div className="b-board-tile__right">
           <div className="b-board-tile__right-item">
@@ -29,26 +29,27 @@ function BoardTile({
               className="b-board-tile__toggle-starred"
               onClick={() => onToggleStarredClick(id, starred)}
             >
-              {starred ? (
-                <Icon name="star" />
-                ) : (
-                  <Icon name="star-empty" />
-              )}
+              {starred ? <Icon name="star" /> : <Icon name="star-empty" />}
             </a>
           </div>
           <div className="b-board-tile__right-item">
-            <ToggleMenu menu={
-              <MenuList
-                modifiers={['sm']}
-                items={[{
-                  title: 'Edit',
-                  onClick: () => onEditClick(id),
-                }, {
-                  title: 'Remove',
-                  onClick: () => onRemoveClick(id),
-                }]}
-              />
-            } />
+            <ToggleMenu
+              menu={
+                <MenuList
+                  modifiers={["sm"]}
+                  items={[
+                    {
+                      title: "Edit",
+                      onClick: () => onEditClick(id)
+                    },
+                    {
+                      title: "Remove",
+                      onClick: () => onRemoveClick(id)
+                    }
+                  ]}
+                />
+              }
+            />
           </div>
         </div>
       </div>
@@ -56,28 +57,19 @@ function BoardTile({
         <div className="b-board-tile__left">
           <div className="b-board-tile__board-info">
             <div className="b-board-tile__icon-item">
-              <IconItem
-                iconWidth="15"
-                iconName="list"
-              >
+              <IconItem iconWidth="15" iconName="list">
                 {listsLength}
               </IconItem>
             </div>
             <div className="b-board-tile__icon-item">
-              <IconItem
-                iconWidth="14"
-                iconName="card"
-              >
+              <IconItem iconWidth="14" iconName="card">
                 {cardsLength}
               </IconItem>
             </div>
           </div>
         </div>
         <div className="b-board-tile__right">
-          <Link
-            className="b-board-tile__more"
-            to={link}
-          >
+          <Link className="b-board-tile__more" to={link}>
             More
           </Link>
         </div>
@@ -95,7 +87,7 @@ BoardTile.propTypes = {
   cardsLength: PropTypes.number.isRequired,
   onRemoveClick: PropTypes.func.isRequired,
   onEditClick: PropTypes.func.isRequired,
-  onToggleStarredClick: PropTypes.func.isRequired,
+  onToggleStarredClick: PropTypes.func.isRequired
 };
 
 export default BoardTile;
