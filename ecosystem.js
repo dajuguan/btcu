@@ -3,8 +3,11 @@ module.exports = {
     {
       name: "btcu_PM2",
       script: "./server/bin/www",
-      env_production: {
-        NODE_ENV: "production"
+      env: {
+        NODE_ENV: "production",
+        DATABASE_URL: "postgres://root:buaa@localhost:5432/test",
+        JWT_SECRET: "password",
+        PORT: 8001
       },
       instances: 2,
       exec_mode: "cluster"
