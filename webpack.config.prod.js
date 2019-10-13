@@ -5,7 +5,6 @@ const path = require("path");
 const autoprefixer = require("autoprefixer");
 
 module.exports = {
-  devtool: "source-map",
   entry: [path.join(__dirname, "client/index.js")],
   output: {
     publicPath: "/static/js",
