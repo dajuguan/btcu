@@ -32,9 +32,6 @@ function Board({
           </div>
         </div>
       </div>
-      <BottomBox
-        button={<Btn text="Add new list" onClick={onAddListBtnClick} />}
-      />
     </div>
   );
 }

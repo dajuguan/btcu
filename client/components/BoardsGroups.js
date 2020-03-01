@@ -11,27 +11,7 @@ function BoardsGroups({ groups, onGroupTitleClick }) {
         {[groups[0]].map(
           ({ title, type, ids, count, hidden, spinner, error }, i) => (
             <div className="b-boards-groups__group" key={i}>
-              <Toggle
-                link={
-                  <div className="b-boards-groups__top">
-                    <span className="b-boards-groups__group-title">
-                      {title}
-                      &nbsp;
-                      <span className="b-boards-groups__count">
-                        ({count || ids.length})
-                      </span>
-                    </span>
-                    <span className="b-boards-groups__line" />
-                    <div className="b-boards-groups__toggle-icon">
-                      <Icon name="chevron-down" />
-                    </div>
-                  </div>
-                }
-                content={<Boards ids={ids} spinner={spinner} error={error} />}
-                onLinkClick={isActive => onGroupTitleClick(type, isActive)}
-                isActive={!hidden}
-                closeWhenClickedOutside={false}
-              />
+              <Boards ids={ids} spinner={spinner} error={error} />
             </div>
           )
         )}

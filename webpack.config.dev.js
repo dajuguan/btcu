@@ -13,7 +13,8 @@ module.exports = {
   output: {
     publicPath: "/static/js",
     path: path.join(__dirname, "/server/static/js"),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    globalObject: "this"
   },
   module: {
     loaders: [
@@ -34,10 +35,22 @@ module.exports = {
           ]
         }
       },
-      {
-        test: /\.css$/,
-        loader: "style-loader!css-loader!"
-      },
+      // {
+      //   test: /\.css$/,
+      //   loader: "style-loader!css-loader!",
+      //   options: {
+      //     plugins: [
+      //       [
+      //         "import",
+      //         {
+      //           libraryName: "antd",
+      //           libraryDirectory: "es",
+      //           style: "css" // `style: true` 会加载 less 文件
+      //         }
+      //       ]
+      //     ]
+      //   }
+      // },
       {
         test: /\.json$/,
         loader: "json-loader"

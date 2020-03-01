@@ -31,7 +31,7 @@ export const getStarredGroup = createSelector(
       title: "Starred boards",
       type: "starred",
       ids,
-      hidden,
+      hidden: false,
       error
     };
   }

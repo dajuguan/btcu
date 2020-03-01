@@ -8,7 +8,6 @@ import configureStore from "./store/configureStore";
 import Root from "./containers/Root";
 
 import "./stylesheet/common.scss";
-import "antd/dist/antd.css";
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 

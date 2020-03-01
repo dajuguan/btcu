@@ -1,348 +1,142 @@
-import React, { PropTypes } from "react";
-import { addModifiers } from "../utils";
-import BoardTileContainer from "../containers/BoardTileContainer";
-import BoardsSpinner from "./BoardsSpinner";
+import React, { PropTypes, Component } from "react";
+// import { addModifiers } from "../utils";
+// import BoardTileContainer from "../containers/BoardTileContainer";
+// import BoardsSpinner from "./BoardsSpinner";
 
-import { List, Card, Avatar } from "antd";
+import { List, Card, Avatar, Row, Col } from "antd";
+
 const { Meta } = Card;
-const dappData = [
-  {
-    title: "DeFi.Review",
-    src: "https://defi.review/favicon.ico",
-    desc: "Tracking the key metrics of DeFi projects",
-    href: "https://www.block123.com"
-  },
-  {
-    title: "Dapp.Review",
-    src: "https://dapp.review/favicon.ico",
-    desc: "提供最准确的DApp数据用户见解和市场分析",
-    href: "https://dapp.review"
-  },
-  {
-    title: "DAppTotal",
-    src: "https://m.dapptotal.com/static/img/icon.png",
-    desc: "a world leading DApp data service platform",
-    href: "https://www.dapptotal.com"
-  }
-];
 
-const newsData = [
-  {
-    title: "Block123",
-    src: "https://realsatoshi.net/wp-content/uploads/2019/08/block123.jpg",
-    desc: "区块链项目导航大全",
-    href: "https://www.block123.com"
-  },
-  {
-    title: "CoinGecko",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/08/JTajbfS_400x400.jpg",
-    desc: "加密数据综合查询",
-    href: "https://www.coingecko.com"
-  },
-  {
-    title: "CoinMarketCap",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/08/OEj1fTFp_400x400.jpg",
-    desc: "常用加密数据查询",
-    href: "https://coinmarketcap.com"
-  },
-  {
-    title: "Twitter",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/08/zRim1x6M_400x400.jpg",
-    desc: "连接加密世界的大门",
-    href: "https://twitter.com/"
-  },
-  {
-    title: "链闻",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/08/kjmVTJtS_400x400.jpg",
-    desc: "区块链资讯与深度分析",
-    href: "https://www.chainnews.com"
-  },
-  {
-    title: "Messari",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/08/TNls9ggU_400x400.jpg",
-    desc: "加密综合信息数据服务商",
-    href: "https://messari.io"
-  },
-  {
-    title: "币未来",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/09/cropped-bilogo2-270x270.jpg",
-    desc: "每周三篇加密文献翻译",
-    href: "https://biweilai.com"
-  },
-  {
-    title: "Smith and Crown",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/09/1DZYY55_400x400.png",
-    desc: "山寨版Messari",
-    href: "https://www.smithandcrown.com"
-  },
-  {
-    title: "链向财经",
-    src: "https://realsatoshi.net/wp-content/uploads/2019/09/chainfor-1.jpeg",
-    desc: "区块链项目服务平台",
-    href: "https://www.chainfor.com"
-  },
-  {
-    title: "4chan",
-    src: "https://realsatoshi.net/wp-content/uploads/2019/08/4chan.png",
-    desc: "实时跟踪热门币种",
-    href: "http://www.4chan.org"
-  },
-  {
-    title: "区块律动",
-    src: "https://realsatoshi.net/wp-content/uploads/2019/08/blockbeats.png",
-    desc: "区块链研究机构与资讯平台",
-    href: "https://www.theblockbeats.com"
+var data = {};
+class Title extends React.Component {
+  render() {
+    return (
+      <div style={{ textAlign: "center", fontWeight: "bold" }}>
+        {this.props.name}
+        {<Divider />}
+      </div>
+    );
   }
-];
+}
 
-const exChangeData = [
-  {
-    title: "BitMax",
-    src: "https://realsatoshi.net/wp-content/uploads/2019/08/bitmax.jpg",
-    desc: "玩法很多的交易所",
-    href: "https://bitmax.io"
-  },
-  {
-    title: "Bittrex",
-    src: "https://realsatoshi.net/wp-content/uploads/2019/08/bittrex-1.jpg",
-    desc: "国外老牌山寨交易网",
-    href: "https://bittrex.com"
-  },
-  {
-    title: "Gate",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/08/dxrS0XbM_400x400.jpg",
-    desc: "一个区块链数字资产交易平台",
-    href: "https://www.gate.io"
-  },
-  {
-    title: "IDEX",
-    src: "https://realsatoshi.net/wp-content/uploads/2019/08/idex_400x400.png",
-    desc: "小市值币天堂",
-    href: "https://idex.market"
-  },
-  {
-    title: "KuCoin",
-    src: "https://realsatoshi.net/wp-content/uploads/2019/08/1L_400x400.jpg",
-    desc: "人民交易所",
-    href: "https://www.kucoin.com"
-  },
-  {
-    title: "Poloniex",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/08/wjGAadvs_400x400.jpg",
-    desc: "合规之后能否崛起",
-    href: "https://poloniex.com"
-  },
-  {
-    title: "币安",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/08/FNue6te7_400x400.jpg",
-    desc: "巨头交易所",
-    href: "https://www.binance.com"
-  },
-  {
-    title: "抹茶交易所",
-    src: "https://realsatoshi.net/wp-content/uploads/2019/08/mxc_400x400.png",
-    desc: "快速崛起的黑马交易所",
-    href: "https://www.mxc.com"
-  },
-  {
-    title: "火币",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/08/R65FAGxg_400x400.jpg",
-    desc: "综合性加密货币服务商",
-    href: "https://www.hbg.com"
-  },
-  {
-    title: "BiHODL",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/08/kbGqBXUK_400x400.png",
-    desc: "Web3.0时代的龙头交易所，2-3年内必将崛起",
-    href: "https://bihodl.com"
-  },
-  {
-    title: "虎符",
-    src: "https://realsatoshi.net/wp-content/uploads/2019/09/Hoo-wallet.png",
-    desc: "新用户友好型交易所",
-    href: "https://hoo.com"
-  }
-];
+const titleMap = {
+  dapp: "Dapp",
+  news: "资讯",
+  defi: "Defi",
+  exchange: "交易所",
+  database: "炒币数据库"
+};
 
-const biDataBaseData = [
-  {
-    title: "CryptoMiso",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/08/FcnOBLYm_400x400.jpg",
-    desc: "通过代码编辑次数评估加密货币",
-    href: "https://www.cryptomiso.com"
-  },
-  {
-    title: "Fifty one",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/08/odxGWCsD_400x400.png",
-    desc: "通过影响力值来评估加密货币",
-    href: "https://fifty.one"
-  },
-  {
-    title: "ICODrops",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/08/YygF9NdQ_400x400.jpg",
-    desc: "ICO 项目数据库",
-    href: "https://icodrops.com"
-  },
-  {
-    title: "牛币圈",
-    src: "https://realsatoshi.net/wp-content/uploads/2019/08/logo.png",
-    desc: "找百倍小矿币，就上牛币圈",
-    href: "https://www.niubiquan.com"
-  },
-  {
-    title: "Github",
-    src:
-      "https://realsatoshi.net/wp-content/uploads/2019/08/iuxTnT5g_400x400.jpg",
-    desc: "项目代码勤不勤奋就看Github",
-    href: "https://github.com"
-  }
-];
-function Boards({ ids = [], spinner, error }) {
+function makeList(title) {
+  const currentTitle = titleMap[title];
+  const currentData = data[title];
+  console.log(global.state.menuName, currentData);
   return (
-    <div className="b-boards">
-      {error ? (
-        <div className="b-boards__message">Error loading boards.</div>
-      ) : (
-        <div className="b-boards__items">
-          <List
-            grid={{
-              gutter: 16,
-              xs: 1,
-              sm: 2,
-              md: 3,
-              lg: 3,
-              xl: 4,
-              xxl: 5
-            }}
-            header={"资讯"}
-            dataSource={newsData}
-            renderItem={item => (
-              <List.Item>
-                <Card>
-                  <Meta
-                    avatar={<Avatar src={item.src} />}
-                    title={<a href={item.href}>{item.title}</a>}
-                    description={item.desc || "This is the description"}
-                  />
-                </Card>
-              </List.Item>
-            )}
-          />
-          <List
-            grid={{
-              gutter: 16,
-              xs: 1,
-              sm: 2,
-              md: 3,
-              lg: 4,
-              xl: 4,
-              xxl: 5
-            }}
-            header={"Dapp"}
-            dataSource={dappData}
-            renderItem={item => (
-              <List.Item>
-                <Card>
-                  <Meta
-                    avatar={<Avatar src={item.src} />}
-                    title={<a href={item.href}>{item.title}</a>}
-                    description={item.desc || "This is the description"}
-                  />
-                </Card>
-              </List.Item>
-            )}
-          />
-          <List
-            grid={{
-              gutter: 16,
-              xs: 1,
-              sm: 2,
-              md: 3,
-              lg: 4,
-              xl: 4,
-              xxl: 5
-            }}
-            header={"交易所"}
-            dataSource={exChangeData}
-            renderItem={item => (
-              <List.Item>
-                <Card>
-                  <Meta
-                    avatar={<Avatar src={item.src} />}
-                    title={<a href={item.href}>{item.title}</a>}
-                    description={item.desc || "This is the description"}
-                  />
-                </Card>
-              </List.Item>
-            )}
-          />
-          <List
-            grid={{
-              gutter: 16,
-              xs: 1,
-              sm: 2,
-              md: 3,
-              lg: 4,
-              xl: 4,
-              xxl: 5
-            }}
-            header={"炒币数据库"}
-            dataSource={biDataBaseData}
-            renderItem={item => (
-              <List.Item>
-                <Card>
-                  <Meta
-                    avatar={<Avatar src={item.src} />}
-                    title={<a href={item.href}>{item.title}</a>}
-                    description={item.desc || "This is the description"}
-                  />
-                </Card>
-              </List.Item>
-            )}
-          />
-        </div>
-        // <div className="b-boards__items">
-        //   {ids.map((id, i) =>
-        //     <div
-        //       className="b-boards__item"
-        //       key={id}
-        //     >
-        //       <BoardTileContainer id={id} />
-        //     </div>
-        //       )
-        //       }
-        // </div>
+    <List
+      grid={{
+        gutter: 16,
+        xs: 1,
+        sm: 2,
+        md: 3,
+        lg: 3,
+        xl: 4,
+        xxl: 3
+      }}
+      // header={<Title name={currentTitle} />}
+      dataSource={currentData}
+      renderItem={item => (
+        <List.Item>
+          <Card>
+            <Meta
+              avatar={<Avatar src={item.src} />}
+              title={<a href={item.href}>{item.title}</a>}
+              description={
+                item.desc.substring(0, 40) || "This is the description"
+              }
+            />
+          </Card>
+        </List.Item>
       )}
-      {spinner ? (
-        <div className="b-boards__spinner">
-          <BoardsSpinner />
-        </div>
-      ) : (
-        <div />
-      )}
-    </div>
+    />
   );
 }
 
-Boards.propTypes = {
-  ids: PropTypes.array.isRequired,
-  spinner: PropTypes.bool,
-  error: PropTypes.bool
-};
+class Boards extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = global.state;
+  }
+  componentWillMount() {
+    var that = this;
+    fetch("/static/data.json")
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(val) {
+        data = val;
+        console.log(">>>>>>>>", data);
+        that.setState({});
+      });
+  }
+  componentDidMount() {
+    setInterval(() => {
+      if (global.state.menuName != this.state.menuName) {
+        console.log("setstate");
+        this.setState(global.state);
+      }
+    }, 500);
+  }
+
+  render() {
+    var { error } = this.props;
+    return (
+      <div>
+        {error ? (
+          <div className="b-boards__message">Error loading boards.</div>
+        ) : (
+          <div
+            // className="b-boards__items"
+            style={{ background: "#ECECEC", padding: "30px" }}
+          >
+            {this.state.menuName ? (
+              <Row gutter={16}>{makeList(global.state.menuName)}</Row>
+            ) : null}
+          </div>
+        )}
+      </div>
+    );
+  }
+}
+// function Boards({ ids = [], spinner, error }) {
+//   return (
+//     <div>
+//       {error ? (
+//         <div className="b-boards__message">Error loading boards.</div>
+//       ) : (
+//         <div
+//           // className="b-boards__items"
+//           style={{ background: "#ECECEC", padding: "30px" }}
+//         >
+//           {global.menuName ? (
+//             <Row gutter={16}>{makeList(global.menuName)}</Row>
+//           ) : null}
+//         </div>
+//       )}
+//       {spinner ? (
+//         <div className="b-boards__spinner">
+//           <BoardsSpinner />
+//         </div>
+//       ) : (
+//         <div />
+//       )}
+//     </div>
+//   );
+// }
+
+// Boards.propTypes = {
+//   ids: PropTypes.array.isRequired,
+//   spinner: PropTypes.bool,
+//   error: PropTypes.bool
+// };
 
 export default Boards;

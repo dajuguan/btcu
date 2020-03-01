@@ -1,91 +1,129 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Application</title>
-  <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,300,100,300italic,100italic,700italic' rel='stylesheet' type='text/css'>
-  <style>
-    .b-preloader {
-      background-color: #2c323e;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 15;
-      transition: opacity 1s;
-    }
-
-    .b-preloader_hidden {
-      opacity: 0;
-    }
-
-    .b-preloader__spinner {
-      display: flex;
-      height: 55px;
-      text-align: center;
-      font-size: 10px;
-    }
-
-    .b-preloader__rect {
-      background-color: #fff;
-      height: 100%;
-      width: 1px;
-      margin: 0 3px;
-      -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
-      animation: stretchdelay 1.2s infinite ease-in-out;
-    }
-
-    .b-preloader__rect_2 {
-      -webkit-animation-delay: -1.1s;
-      animation-delay: -1.1s;
-    }
-
-    .b-preloader__rect_3 {
-      -webkit-animation-delay: -1.0s;
-      animation-delay: -1.0s;
-    }
-
-    .b-preloader__rect_4 {
-      -webkit-animation-delay: -0.9s;
-      animation-delay: -0.9s;
-    }
-
-    .b-preloader__rect_5 {
-      -webkit-animation-delay: -0.8s;
-      animation-delay: -0.8s;
-    }
-
-    @-webkit-keyframes stretchdelay {
-      0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
-      20% { -webkit-transform: scaleY(1.0) }
-    }
-
-    @keyframes stretchdelay {
-      0%, 40%, 100% { 
-        transform: scaleY(0.4);
-        -webkit-transform: scaleY(0.4);
-      }  20% { 
-        transform: scaleY(1.0);
-        -webkit-transform: scaleY(1.0);
+  <head>
+    <title>BTCU CRYPTO导航</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="由清华、北大、央财、人大、港科大、南开、上交、复旦、浙大、川大、武大、华科大等TOP20高校区块链协会负责人联合发起的中国高校区块链技术;blockchain,defi,crypto,dappp,exchange,区块链,数字货币,defi,dapp,交易所导航"
+    />
+    <link rel="canonical" href="https://btcu.pro/" />
+    <meta
+      property="og:title"
+      content="DeFi - Best Decentralized Finance Projects | What is DeFi in Crypto"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nav.btcu.pro" />
+    <meta
+      property="og:description"
+      content="blockchain,defi,crypto,dappp,exchange,区块链,数字货币,defi,dapp,交易所导航"
+    />
+    <meta property="og:image" content="/static/images/sign-bg.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lobster"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,300,100,300italic,100italic,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      .b-preloader {
+        background-color: #2c323e;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 15;
+        transition: opacity 1s;
       }
-    }
-  </style>
-</head>
-<body>
-  <div id="root"></div>
-  <div class="b-preloader">
-    <div class="b-preloader__spinner">
-      <div class="b-preloader__rect b-preloader__rect_1"></div>
-      <div class="b-preloader__rect b-preloader__rect_2"></div>
-      <div class="b-preloader__rect b-preloader__rect_3"></div>
-      <div class="b-preloader__rect b-preloader__rect_4"></div>
-      <div class="b-preloader__rect b-preloader__rect_5"></div>
-    </div>
-  </div>
-  <script src="/static/js/bundle.js"></script>
-</body>
+
+      .b-preloader_hidden {
+        opacity: 0;
+      }
+
+      .b-preloader__spinner {
+        display: flex;
+        height: 55px;
+        text-align: center;
+        font-size: 10px;
+      }
+
+      .b-preloader__rect {
+        background-color: #fff;
+        height: 100%;
+        width: 1px;
+        margin: 0 3px;
+        -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+        animation: stretchdelay 1.2s infinite ease-in-out;
+      }
+
+      .b-preloader__rect_2 {
+        -webkit-animation-delay: -1.1s;
+        animation-delay: -1.1s;
+      }
+
+      .b-preloader__rect_3 {
+        -webkit-animation-delay: -1s;
+        animation-delay: -1s;
+      }
+
+      .b-preloader__rect_4 {
+        -webkit-animation-delay: -0.9s;
+        animation-delay: -0.9s;
+      }
+
+      .b-preloader__rect_5 {
+        -webkit-animation-delay: -0.8s;
+        animation-delay: -0.8s;
+      }
+
+      @-webkit-keyframes stretchdelay {
+        0%,
+        40%,
+        100% {
+          -webkit-transform: scaleY(0.4);
+        }
+        20% {
+          -webkit-transform: scaleY(1);
+        }
+      }
+
+      @keyframes stretchdelay {
+        0%,
+        40%,
+        100% {
+          transform: scaleY(0.4);
+          -webkit-transform: scaleY(0.4);
+        }
+        20% {
+          transform: scaleY(1);
+          -webkit-transform: scaleY(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- <div class="b-preloader">
+      <div class="b-preloader__spinner">
+        <div class="b-preloader__rect b-preloader__rect_1"></div>
+        <div class="b-preloader__rect b-preloader__rect_2"></div>
+        <div class="b-preloader__rect b-preloader__rect_3"></div>
+        <div class="b-preloader__rect b-preloader__rect_4"></div>
+        <div class="b-preloader__rect b-preloader__rect_5"></div>
+      </div>
+    </div> -->
+    <script src="/static/js/bundle.js"></script>
+  </body>
 </html>

@@ -16,9 +16,10 @@ const isFlexboxSupported = Modernizr.flexbox && Modernizr.flexwrap;
 
 function ensureSignedIn(nextState, replace) {
   //去除登录验证
-  if (!cookie.get('authenticated')) {
-    replace('/sign-in');
-  }
+  // if (!cookie.get('authenticated')) {
+  //   replace('/sign-in');
+  // }
+  return;
 }
 
 function ensureSignedOut(nextState, replace) {
@@ -43,8 +44,9 @@ function handleUpdatePageEnter(nextState, replace) {
 export default function(store) {
   return (
     <Route path="/">
+      <div>test</div>
       <Route onEnter={ensureBrowserIsUpdated}>
-        <Route onEnter={ensureSignedIn} component={AppContainer}>
+        <Route component={AppContainer}>
           <IndexRoute
             component={IndexPage}
             onLeave={() => store.dispatch(setPageIndex(1))}
