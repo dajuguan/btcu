@@ -2,24 +2,29 @@
   &__items {
     display: flex;
     flex-wrap: wrap;
-    margin: -10px;
-    position: relative;
+    // margin: -10px;
+    // position: relative;
   }
+
   &__spinner {
     display: flex;
     justify-content: center;
     margin-top: 25px;
   }
+
   &__item {
     width: 25%;
     padding: 10px;
   }
+
   &__message {
     color: $white;
     font-size: 14px;
   }
+
   &_transparent {
     opacity: .7;
+
     &:after {
       content: '';
       width: 100%;

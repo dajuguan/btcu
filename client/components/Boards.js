@@ -218,16 +218,16 @@ function Boards({ ids = [], spinner, error }) {
       {error ? (
         <div className="b-boards__message">Error loading boards.</div>
       ) : (
-        <div style={{ background: "#ECECEC", padding: "30px" }}>
+        <div className="b-boards__items">
           <List
             grid={{
               gutter: 16,
               xs: 1,
               sm: 2,
-              md: 4,
-              lg: 4,
-              xl: 6,
-              xxl: 3
+              md: 3,
+              lg: 3,
+              xl: 4,
+              xxl: 5
             }}
             header={"资讯"}
             dataSource={newsData}
@@ -248,10 +248,10 @@ function Boards({ ids = [], spinner, error }) {
               gutter: 16,
               xs: 1,
               sm: 2,
-              md: 4,
+              md: 3,
               lg: 4,
-              xl: 6,
-              xxl: 3
+              xl: 4,
+              xxl: 5
             }}
             header={"Dapp"}
             dataSource={dappData}
@@ -272,10 +272,10 @@ function Boards({ ids = [], spinner, error }) {
               gutter: 16,
               xs: 1,
               sm: 2,
-              md: 4,
+              md: 3,
               lg: 4,
-              xl: 6,
-              xxl: 3
+              xl: 4,
+              xxl: 5
             }}
             header={"交易所"}
             dataSource={exChangeData}
@@ -296,10 +296,10 @@ function Boards({ ids = [], spinner, error }) {
               gutter: 16,
               xs: 1,
               sm: 2,
-              md: 4,
+              md: 3,
               lg: 4,
-              xl: 6,
-              xxl: 3
+              xl: 4,
+              xxl: 5
             }}
             header={"炒币数据库"}
             dataSource={biDataBaseData}
