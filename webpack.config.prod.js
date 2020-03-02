@@ -3,7 +3,7 @@
 const webpack = require("webpack");
 const path = require("path");
 const autoprefixer = require("autoprefixer");
-const BabiliPlugin = require("babili-webpack-plugin");
+// const BabiliPlugin = require("babili-webpack-plugin");
 module.exports = {
   entry: [path.join(__dirname, "client/index.js")],
   output: {
@@ -51,7 +51,7 @@ module.exports = {
         NODE_ENV: JSON.stringify("production")
       }
     }),
-    new BabiliPlugin(),
+    // new BabiliPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false
