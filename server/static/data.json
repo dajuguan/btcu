@@ -261,6 +261,12 @@
       "src": "https://www.curve.fi/logo.svg",
       "desc": "Curve is an exchange liquidity pool on Ethereum (like Uniswap) designed for (1) extremely efficient stablecoin trading (2) low risk, supplemental fee income for liquidity providers, without an opportunity cost.",
       "href": "https://www.curve.fi/"
+    },
+    {
+      "title": "VIGOR Stablecoin",
+      "src": "https://vigor.ai/icons/icon-48x48.png",
+      "desc": "Peer-to-Peer Lending - Borrow, Lend, Insure, Earn",
+      "href": "https://vigor.ai/"
     }
   ],
   "resource": [],
