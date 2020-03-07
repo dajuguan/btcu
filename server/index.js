@@ -27,9 +27,14 @@ if (process.env.NODE_ENV === "development") {
   app.use(webpackHotMiddleware(compiler));
 }
 
+app.use(function(req, res, next) {
+  console.log(req.path);
+  next();
+});
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
 app.use("/static", express.static(path.join(__dirname, "static")));
 app.use(
   "/.well-known",

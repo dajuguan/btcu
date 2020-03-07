@@ -1,7 +1,8 @@
-const sanitize = require('../utils/sanitize');
-const Finder = require('../models/Finder');
+const sanitize = require("../utils/sanitize");
+const Finder = require("../models/Finder");
 
 exports.find = (req, res, next) => {
+  console.log(req.body);
   const body = sanitize(req.body);
   const userId = req.user.id;
 
