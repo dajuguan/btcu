@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-const _ = require('lodash');
+const _ = require("lodash");
 
 module.exports = (err, req, res, next) => {
-  let message = process.env.NODE_ENV !== 'production' ? err.message : undefined;
+  let message = process.env.NODE_ENV !== "production" ? err.message : undefined;
 
   let status = 500;
   let result;

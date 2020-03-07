@@ -231,15 +231,26 @@
       "src": "https://defiprime.com/images/og.png",
       "desc": "DeFi - Best Decentralized Finance Projects | What is DeFi in Crypto",
       "href": "https://defiprime.com/"
-    }
-  ],
-  "resource": [
+    },
     {
-      "title": "defipulse",
-      "src": "https://defipulse.com/static/Images/favicon.ico",
-      "desc": "DeFi - The Decentralized Finance Leaderboard at DeFi Pulse                                     ",
-      "href": "https://defipulse.com/"
+      "title": "Pools.fyi",
+      "src": "https://pools.fyi/preview.png",
+      "desc": "Review historical returns for Uniswap liquidity providers and transparent trading activity.",
+      "href": "https://pools.fyi/#/zh/"
+    },
+    {
+      "title": "defiscore",
+      "src": "https://defiscore.io/favicon-96x96.png",
+      "desc": "DeFi Score is a methodology for assessing risk in permissionless lending platforms.",
+      "href": "https://defiscore.io/"
+    },
+    {
+      "title": "defisaver",
+      "src": "https://defisaver.com//assets/favicon.ico",
+      "desc": "DeFi Saver - Next generation DeFi management dashboard",
+      "href": "https://defisaver.com/"
     }
   ],
+  "resource": [],
   "paper": []
 }

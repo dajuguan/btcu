@@ -1,7 +1,7 @@
-const _ = require('lodash');
-const sanitize = require('../utils/sanitize');
-const Card = require('../models/Card');
-const Activity = require('../models/Activity');
+const _ = require("lodash");
+const sanitize = require("../utils/sanitize");
+const Card = require("../models/Card");
+const Activity = require("../models/Activity");
 
 exports.create = (req, res, next) => {
   const userId = req.user.id;
@@ -10,20 +10,25 @@ exports.create = (req, res, next) => {
 
   return Card.create(listId, cardProps)
     .then(card => {
-      return Card.getColors(card.id)
-        .then(colors => _.assign({}, card, { colors }));
+      return Card.getColors(card.id).then(colors =>
+        _.assign({}, card, { colors })
+      );
     })
     .then(card => {
-      return Activity.create(userId, card.id, 'cards', 'Created')
-        .then(activity => _.assign({}, { card }, { activity }));
+      return Activity.create(
+        userId,
+        card.id,
+        "cards",
+        "Created"
+      ).then(activity => _.assign({}, { card }, { activity }));
     })
     .then(result => {
       res.status(201).json({
         notification: {
-          message: 'Card was successfully created',
-          type: 'info',
+          message: "Card was successfully created",
+          type: "info"
         },
-        result,
+        result
       });
     }, next);
 };
@@ -35,16 +40,20 @@ exports.update = (req, res, next) => {
 
   return Card.update(cardId, props)
     .then(card => {
-      return Activity.create(userId, card.id, 'cards', 'Updated')
-        .then(activity => _.assign({}, { card }, { activity }));
+      return Activity.create(
+        userId,
+        card.id,
+        "cards",
+        "Updated"
+      ).then(activity => _.assign({}, { card }, { activity }));
     })
     .then(result => {
       res.status(200).json({
         notification: {
-          message: 'Card was successfully updated',
-          type: 'info',
+          message: "Card was successfully updated",
+          type: "info"
         },
-        result,
+        result
       });
     }, next);
 };
@@ -55,16 +64,20 @@ exports.drop = (req, res, next) => {
 
   return Card.drop(cardId)
     .then(card => {
-      return Activity.create(userId, card.id, 'cards', 'Deleted')
-        .then(activity => _.assign({}, { card }, { activity }));
+      return Activity.create(
+        userId,
+        card.id,
+        "cards",
+        "Deleted"
+      ).then(activity => _.assign({}, { card }, { activity }));
     })
     .then(result => {
       res.status(200).json({
         notification: {
-          message: 'Card was successfully removed',
-          type: 'info',
+          message: "Card was successfully removed",
+          type: "info"
         },
-        result,
+        result
       });
     }, next);
 };
@@ -74,8 +87,9 @@ exports.findById = (req, res, next) => {
 
   return Card.findById(cardId)
     .then(card => {
-      return Card.getColors(card.id)
-        .then(colors => _.assign({}, card, { colors }));
+      return Card.getColors(card.id).then(colors =>
+        _.assign({}, card, { colors })
+      );
     })
     .then(card => {
       res.status(200).json({ result: card });
@@ -88,12 +102,12 @@ exports.addColor = (req, res, next) => {
 
   return Card.addColor(cardId, colorId)
     .then(() => Card.getColors(cardId))
-    .then((colors) => {
+    .then(colors => {
       res.status(200).json({
         result: {
           id: cardId,
-          colors,
-        },
+          colors
+        }
       });
     }, next);
 };
@@ -104,12 +118,12 @@ exports.removeColor = (req, res, next) => {
 
   return Card.removeColor(cardId, colorId)
     .then(() => Card.getColors(cardId))
-    .then((colors) => {
+    .then(colors => {
       res.status(200).json({
         result: {
           id: cardId,
-          colors,
-        },
+          colors
+        }
       });
     }, next);
 };
@@ -118,8 +132,7 @@ exports.move = (req, res, next) => {
   const sourceList = req.body.sourceList;
   const targetList = req.body.targetList;
 
-  return Card.move(sourceList, targetList)
-    .then(result => {
-      res.status(200).json({ result });
-    }, next);
+  return Card.move(sourceList, targetList).then(result => {
+    res.status(200).json({ result });
+  }, next);
 };

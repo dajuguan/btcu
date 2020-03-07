@@ -1,7 +1,7 @@
-const _ = require('lodash');
-const sanitize = require('../utils/sanitize');
-const List = require('../models/List');
-const Activity = require('../models/Activity');
+const _ = require("lodash");
+const sanitize = require("../utils/sanitize");
+const List = require("../models/List");
+const Activity = require("../models/Activity");
 
 exports.create = (req, res, next) => {
   const userId = req.user.id;
@@ -10,18 +10,19 @@ exports.create = (req, res, next) => {
 
   return List.create(boardId, listProps)
     .then(list => {
-      return Activity.create(userId, list.id, 'lists', 'Created')
-      .then(activity => {
-        return _.assign({}, { list }, { activity });
-      });
+      return Activity.create(userId, list.id, "lists", "Created").then(
+        activity => {
+          return _.assign({}, { list }, { activity });
+        }
+      );
     })
     .then(result => {
       res.status(201).json({
         notification: {
-          message: 'List was successfully created',
-          type: 'info',
+          message: "List was successfully created",
+          type: "info"
         },
-        result,
+        result
       });
     }, next);
 };
@@ -33,16 +34,20 @@ exports.update = (req, res, next) => {
 
   return List.update(listId, props)
     .then(list => {
-      return Activity.create(userId, list.id, 'lists', 'Updated')
-        .then(activity => _.assign({}, { list }, { activity }));
+      return Activity.create(
+        userId,
+        list.id,
+        "lists",
+        "Updated"
+      ).then(activity => _.assign({}, { list }, { activity }));
     })
     .then(result => {
       res.status(200).json({
         notification: {
-          message: 'List was successfully updated',
-          type: 'info',
+          message: "List was successfully updated",
+          type: "info"
         },
-        result,
+        result
       });
     }, next);
 };
@@ -53,16 +58,20 @@ exports.drop = (req, res, next) => {
 
   return List.drop(listId)
     .then(list => {
-      return Activity.create(userId, listId, 'lists', 'Removed')
-        .then(activity => _.assign({}, { list }, { activity }));
+      return Activity.create(
+        userId,
+        listId,
+        "lists",
+        "Removed"
+      ).then(activity => _.assign({}, { list }, { activity }));
     })
     .then(result => {
       res.status(200).json({
         notification: {
-          message: 'List was successfully removed',
-          type: 'info',
+          message: "List was successfully removed",
+          type: "info"
         },
-        result,
+        result
       });
     }, next);
 };

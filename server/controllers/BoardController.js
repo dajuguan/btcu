@@ -1,7 +1,7 @@
-const _ = require('lodash');
-const sanitize = require('../utils/sanitize');
-const Board = require('../models/Board');
-const Activity = require('../models/Activity');
+const _ = require("lodash");
+const sanitize = require("../utils/sanitize");
+const Board = require("../models/Board");
+const Activity = require("../models/Activity");
 
 exports.create = (req, res, next) => {
   const userId = req.user.id;
@@ -9,16 +9,20 @@ exports.create = (req, res, next) => {
 
   return Board.create(userId, boardProps)
     .then(board => {
-      return Activity.create(userId, board.id, 'boards', 'Created')
-        .then(activity => _.assign({}, { board }, { activity }));
+      return Activity.create(
+        userId,
+        board.id,
+        "boards",
+        "Created"
+      ).then(activity => _.assign({}, { board }, { activity }));
     })
     .then(result => {
       res.status(201).json({
         notification: {
-          message: 'Board was successfully created',
-          type: 'info',
+          message: "Board was successfully created",
+          type: "info"
         },
-        result,
+        result
       });
     }, next);
 };
@@ -32,7 +36,9 @@ exports.findAllByUser = (req, res, next) => {
   const offset = itemsPerPage ? itemsPerPage * (page - 1) : 0;
 
   return Board.findAllByUser(userId, itemsPerPage, offset, starred)
-    .then(boards => Board.getBoardsCount(userId).then(count => ({ boards, count })))
+    .then(boards =>
+      Board.getBoardsCount(userId).then(count => ({ boards, count }))
+    )
     .then(result => {
       const boards = result.boards;
       const count = result.count;
@@ -42,9 +48,9 @@ exports.findAllByUser = (req, res, next) => {
       }
 
       return {
-        nextPage: + page + 1,
+        nextPage: +page + 1,
         boards,
-        count,
+        count
       };
     })
     .then(result => {
@@ -55,10 +61,9 @@ exports.findAllByUser = (req, res, next) => {
 exports.findById = (req, res, next) => {
   const id = req.params.id;
 
-  return Board.findById(id)
-    .then(board => {
-      res.status(200).json({ result: board });
-    }, next);
+  return Board.findById(id).then(board => {
+    res.status(200).json({ result: board });
+  }, next);
 };
 
 exports.update = (req, res, next) => {
@@ -70,22 +75,30 @@ exports.update = (req, res, next) => {
 
   return Board.update(boardId, props)
     .then(board => {
-      if (activity === 'false') {
+      if (activity === "false") {
         return { board };
       }
-      return Activity.create(userId, boardId, 'boards', 'Updated')
-        .then(activity => _.assign({}, { board }, { activity }));
+      return Activity.create(
+        userId,
+        boardId,
+        "boards",
+        "Updated"
+      ).then(activity => _.assign({}, { board }, { activity }));
     })
     .then(result => {
-      if (notify === 'false') {
+      if (notify === "false") {
         return { result };
       }
-      return _.assign({}, { result }, {
-        notification: {
-          message: 'Board was successfully updated',
-          type: 'info',
-        },
-      });
+      return _.assign(
+        {},
+        { result },
+        {
+          notification: {
+            message: "Board was successfully updated",
+            type: "info"
+          }
+        }
+      );
     })
     .then(body => {
       res.status(200).json(body);
@@ -98,16 +111,20 @@ exports.drop = (req, res, next) => {
 
   return Board.drop(boardId)
     .then(board => {
-      return Activity.create(userId, boardId, 'boards', 'Removed')
-        .then(activity => _.assign({}, { board }, { activity }));
+      return Activity.create(
+        userId,
+        boardId,
+        "boards",
+        "Removed"
+      ).then(activity => _.assign({}, { board }, { activity }));
     })
     .then(result => {
       res.status(200).json({
         notification: {
-          message: 'Board was successfully removed',
-          type: 'info',
+          message: "Board was successfully removed",
+          type: "info"
         },
-        result,
+        result
       });
     }, next);
 };

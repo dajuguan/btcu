@@ -33,7 +33,13 @@ app.use(function(req, res, next) {
 });
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.raw());
+app.use(
+  bodyParser.urlencoded({
+    type: "application/x-www-form-urlencoded",
+    extended: false
+  })
+);
 app.use(bodyParser.text());
 app.use("/static", express.static(path.join(__dirname, "static")));
 app.use(
