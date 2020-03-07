@@ -249,6 +249,12 @@
       "src": "https://defisaver.com//assets/favicon.ico",
       "desc": "DeFi Saver - Next generation DeFi management dashboard",
       "href": "https://defisaver.com/"
+    },
+    {
+      "title": "DEX Aggregator - 1inch.exchange",
+      "src": "https://1inch.exchange/assets/assets/logo.svg",
+      "desc": "DEX Aggregator with the best prices on the market. Achieving best rates by splitting orders among multiple DEXes in one single transaction.",
+      "href": "https://1inch.exchange/"
     }
   ],
   "resource": [],
