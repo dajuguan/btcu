@@ -255,6 +255,12 @@
       "src": "https://1inch.exchange/assets/assets/logo.svg",
       "desc": "DEX Aggregator with the best prices on the market. Achieving best rates by splitting orders among multiple DEXes in one single transaction.",
       "href": "https://1inch.exchange/"
+    },
+    {
+      "title": "🌀 Curve.fi :: Compounded",
+      "src": "https://www.curve.fi/logo.svg",
+      "desc": "Curve is an exchange liquidity pool on Ethereum (like Uniswap) designed for (1) extremely efficient stablecoin trading (2) low risk, supplemental fee income for liquidity providers, without an opportunity cost.",
+      "href": "https://www.curve.fi/"
     }
   ],
   "resource": [],
