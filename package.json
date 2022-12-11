@@ -36,7 +36,7 @@
     "dateformat": "^1.0.12",
     "ejs": "^2.4.1",
     "escape-html": "^1.0.3",
-    "express": "^4.13.4",
+    "express": "^4.17.3",
     "form-serialize": "^0.7.1",
     "i": "^0.3.5",
     "import-glob-loader": "^1.1.0",
